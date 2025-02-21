@@ -8,7 +8,7 @@
 int main()
 {
     // window dimension
-    int windowDimensions[2]{640, 480};
+    int windowDimensions[2]{1640, 1480};
 
     // initialize the window
     InitWindow(windowDimensions[0], windowDimensions[1], "Nick's Top Down");
