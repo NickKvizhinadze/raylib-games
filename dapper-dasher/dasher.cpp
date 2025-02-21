@@ -5,7 +5,6 @@
 #include "nebula.h"
 #include "backgroud.h"
 
-
 int main()
 {
     const int gravity{1'200};
@@ -22,7 +21,6 @@ int main()
     Texture2D nebulaTexture = LoadTexture("./textures/12_nebula_spritesheet.png");
     Nebula nebulae[sizeOfNebulae];
 
-
     for (int i = 0; i < sizeOfNebulae; i++)
     {
         int randomOffset = rand() % (700 - 900 + 1) + 700;
@@ -32,6 +30,7 @@ int main()
     float finishLinePosX = nebulae[sizeOfNebulae - 1].GetPosX() + 500;
     bool isGameOver{false};
     bool isGameWin{false};
+    bool isPaused{false};
 
     SetTargetFPS(60);
     while (!WindowShouldClose())
@@ -41,7 +40,16 @@ int main()
 
         background.Draw(dT);
 
-        if (isGameOver)
+        if (IsKeyPressed(KEY_P))
+        {
+            isPaused = !isPaused;
+        }
+
+        if (isPaused)
+        {
+            DrawText("Paused", windowWidth / 2 - 20, windowHeight / 2 - 20, 40, GREEN);
+        }
+        else if (isGameOver)
         {
             DrawText("Game Over!", windowWidth / 2 - 20, windowHeight / 2 - 20, 40, RED);
         }
